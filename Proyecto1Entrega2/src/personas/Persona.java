@@ -8,5 +8,4 @@ public abstract class Persona {
     protected String login;
     protected String password;
     protected List<String> enfermedadesDiscapacidades;
-
 }
