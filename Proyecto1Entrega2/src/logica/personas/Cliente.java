@@ -1,4 +1,4 @@
-package personas;
+package logica.personas;
 
 import java.util.List;
 

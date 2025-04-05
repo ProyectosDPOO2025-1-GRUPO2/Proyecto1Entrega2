@@ -1,4 +1,4 @@
-package personas;
+package logica.personas;
 
 public class OperadorAtracciones extends Persona {
     // Atributos específicos de OperadorAtracciones (heredados de Persona)

@@ -1,4 +1,4 @@
-package tiquetes;
+package logica.tiquetes;
 
 public abstract class Tiquete {
     // Atributos comunes a todos los tiquetes

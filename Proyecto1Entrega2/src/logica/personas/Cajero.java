@@ -1,4 +1,4 @@
-package personas;
+package logica.personas;
 
 public class Cajero extends Persona {
     // Atributos específicos de Cajero (heredados de Persona)

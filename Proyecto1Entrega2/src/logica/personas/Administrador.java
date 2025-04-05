@@ -1,4 +1,4 @@
-package personas;
+package logica.personas;
 
 public class Administrador extends Persona {
     // Atributos específicos de Administrador (heredados de Persona)

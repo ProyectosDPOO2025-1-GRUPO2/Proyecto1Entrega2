@@ -1,4 +1,4 @@
-package personas;
+package logica.personas;
 
 public class Turno {
 	private boolean apertura;

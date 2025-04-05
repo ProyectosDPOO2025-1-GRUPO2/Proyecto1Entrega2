@@ -1,4 +1,4 @@
-package atracciones;
+package logica.atracciones;
 
 public class AtraccionCultural extends Atraccion {
 

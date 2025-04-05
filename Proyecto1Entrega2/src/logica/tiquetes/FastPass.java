@@ -1,4 +1,4 @@
-package tiquetes;
+package logica.tiquetes;
 
 import java.util.Date;
 

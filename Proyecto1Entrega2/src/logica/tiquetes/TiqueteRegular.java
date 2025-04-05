@@ -1,4 +1,4 @@
-package tiquetes;
+package logica.tiquetes;
 
 public class TiqueteRegular extends Tiquete {
     // Atributos específicos de TiqueteRegular

@@ -1,4 +1,4 @@
-package atracciones;
+package logica.atracciones;
 
 import java.time.LocalDateTime;
 
