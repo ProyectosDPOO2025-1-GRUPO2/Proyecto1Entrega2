@@ -1,5 +1,6 @@
 package logica.personas;
 
+import java.util.Date;
 import java.util.List;
 
 public class OperadorAtracciones extends Persona {
@@ -11,12 +12,16 @@ public class OperadorAtracciones extends Persona {
 	 * @param login
 	 * @param password
 	 * @param enfermedadesDiscapacidades
+	 * @param fechaDeNacimiento
+	 * @param peso
 	 * @param nivelRiesgoCapacitado
 	 */
 	public OperadorAtracciones(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			String nivelRiesgoCapacitado) {
-		super(nombre, login, password, enfermedadesDiscapacidades);
+			Date fechaDeNacimiento, int peso, String nivelRiesgoCapacitado) {
+		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso);
 		this.nivelRiesgoCapacitado = nivelRiesgoCapacitado;
 	}
+
+	
     
 }

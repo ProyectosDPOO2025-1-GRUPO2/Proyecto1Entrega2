@@ -1,5 +1,6 @@
 package logica.personas;
 
+import java.util.Date;
 import java.util.List;
 
 public class Administrador extends Persona {
@@ -9,11 +10,13 @@ public class Administrador extends Persona {
 	 * @param login
 	 * @param password
 	 * @param enfermedadesDiscapacidades
+	 * @param fechaDeNacimiento
+	 * @param peso
 	 */
-	public Administrador(String nombre, String login, String password, List<String> enfermedadesDiscapacidades) {
-		super(nombre, login, password, enfermedadesDiscapacidades);
+	public Administrador(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
+			Date fechaDeNacimiento, int peso) {
+		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso);
 	}
-    // Atributos específicos de Administrador (heredados de Persona)
-    // No se agregan atributos adicionales para el Administrador en esta etapa
+
 	
 }

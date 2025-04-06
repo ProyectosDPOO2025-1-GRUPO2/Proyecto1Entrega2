@@ -1,5 +1,6 @@
 package logica.personas;
 
+import java.util.Date;
 import java.util.List;
 
 public class Cliente extends Persona{
@@ -11,12 +12,15 @@ public class Cliente extends Persona{
 	 * @param login
 	 * @param password
 	 * @param enfermedadesDiscapacidades
+	 * @param fechaDeNacimiento
+	 * @param peso
 	 * @param tiquetesComprados
 	 */
 	public Cliente(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			List<Integer> tiquetesComprados) {
-		super(nombre, login, password, enfermedadesDiscapacidades);
+			Date fechaDeNacimiento, int peso, List<Integer> tiquetesComprados) {
+		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso);
 		this.tiquetesComprados = tiquetesComprados;
 	}
+
 
 }
