@@ -29,5 +29,24 @@ public abstract class Persona {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 		this.peso = peso;
 	}
+	public String getNombre() {
+		return nombre;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public List<String> getEnfermedadesDiscapacidades() {
+		return enfermedadesDiscapacidades;
+	}
+	public Date getFechaDeNacimiento() {
+		return fechaDeNacimiento;
+	}
+	public int getPeso() {
+		return peso;
+	}
+	
     
 }

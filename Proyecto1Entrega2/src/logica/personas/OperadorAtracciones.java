@@ -22,6 +22,14 @@ public class OperadorAtracciones extends Persona {
 		this.nivelRiesgoCapacitado = nivelRiesgoCapacitado;
 	}
 
+	public String getNivelRiesgoCapacitado() {
+		return nivelRiesgoCapacitado;
+	}
+
+	public void setNivelRiesgoCapacitado(String nivelRiesgoCapacitado) {
+		this.nivelRiesgoCapacitado = nivelRiesgoCapacitado;
+	}
+
 	
     
 }
