@@ -31,6 +31,12 @@ public class OperadorAtracciones extends Persona {
 		this.nivelRiesgoCapacitado = nivelRiesgoCapacitado;
 	}
 
+	@Override
+	public String getRol() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
     

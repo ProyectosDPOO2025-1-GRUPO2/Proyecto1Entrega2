@@ -23,5 +23,11 @@ public class Cocinero extends Persona {
 		this.capacitadoAlimentos = capacitadoAlimentos;
 	}
 
+	@Override
+	public String getRol() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
     
 }

@@ -19,5 +19,11 @@ public class Cajero extends Persona {
 		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
 	}
 
+	@Override
+	public String getRol() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

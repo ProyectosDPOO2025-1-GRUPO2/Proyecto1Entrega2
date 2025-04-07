@@ -103,4 +103,10 @@ public class Administrador extends Persona {
             operador.setNivelRiesgoCapacitado(nivelRiesgo);
         }
     }
+
+	@Override
+	public String getRol() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

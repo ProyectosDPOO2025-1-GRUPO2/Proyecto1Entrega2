@@ -2,6 +2,8 @@ package logica.tiquetes;
 
 import java.util.Date;
 
+import logica.atracciones.Atraccion;
+
 public class TiqueteTemporada extends Tiquete {
     // Atributos específicos de TiqueteTemporada
     protected Date fechaInicio;  // Fecha de inicio de la temporada
@@ -16,6 +18,11 @@ public class TiqueteTemporada extends Tiquete {
 		super(id, estado);
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
+	}
+	@Override
+	public boolean permiteAcceso(Atraccion atraccion) {
+		// TODO Auto-generated method stub
+		return false;
 	}
     
 }
