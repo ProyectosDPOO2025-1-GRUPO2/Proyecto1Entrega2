@@ -14,11 +14,12 @@ public class Cliente extends Persona{
 	 * @param enfermedadesDiscapacidades
 	 * @param fechaDeNacimiento
 	 * @param peso
+	 * @param altura
 	 * @param tiquetesComprados
 	 */
 	public Cliente(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			Date fechaDeNacimiento, int peso, List<Integer> tiquetesComprados) {
-		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso);
+			Date fechaDeNacimiento, int peso, float altura, List<Integer> tiquetesComprados) {
+		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
 		this.tiquetesComprados = tiquetesComprados;
 	}
 

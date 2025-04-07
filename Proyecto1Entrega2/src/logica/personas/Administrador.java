@@ -20,6 +20,8 @@ public class Administrador extends Persona {
     private HashMap<String, Tiquete> tiquetesEmitidos;             // Ticket ID → Nombre comprador
     private HashMap<String, Turno> turnosAsignados;                // login → Turno
     
+
+	
 	/**
 	 * @param nombre
 	 * @param login
@@ -27,26 +29,30 @@ public class Administrador extends Persona {
 	 * @param enfermedadesDiscapacidades
 	 * @param fechaDeNacimiento
 	 * @param peso
+	 * @param altura
 	 * @param parqueNombre
 	 * @param personalRegistrado
 	 * @param turnosDisponibles
 	 * @param atracciones
 	 * @param espectaculos
 	 * @param tiquetesEmitidos
+	 * @param turnosAsignados
 	 */
 	public Administrador(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			Date fechaDeNacimiento, int peso, String parqueNombre, HashMap<String, Persona> personalRegistrado,
-			HashMap<String, Turno> turnosDisponibles, HashMap<String, Atraccion> atracciones,
-			HashMap<String, Espectaculo> espectaculos, HashMap<String, Tiquete> tiquetesEmitidos) {
-		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso);
+			Date fechaDeNacimiento, int peso, float altura, String parqueNombre,
+			HashMap<String, Persona> personalRegistrado, HashMap<String, Turno> turnosDisponibles,
+			HashMap<String, Atraccion> atracciones, HashMap<String, Espectaculo> espectaculos,
+			HashMap<String, Tiquete> tiquetesEmitidos, HashMap<String, Turno> turnosAsignados) {
+		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
 		this.parqueNombre = parqueNombre;
 		this.personalRegistrado = personalRegistrado;
 		this.turnosDisponibles = turnosDisponibles;
 		this.atracciones = atracciones;
 		this.espectaculos = espectaculos;
 		this.tiquetesEmitidos = tiquetesEmitidos;
+		this.turnosAsignados = turnosAsignados;
 	}
-	
+
 	//metodos
 	
 	public void registrarPersona(Persona persona) {

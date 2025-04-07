@@ -14,11 +14,12 @@ public class OperadorAtracciones extends Persona {
 	 * @param enfermedadesDiscapacidades
 	 * @param fechaDeNacimiento
 	 * @param peso
+	 * @param altura
 	 * @param nivelRiesgoCapacitado
 	 */
 	public OperadorAtracciones(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			Date fechaDeNacimiento, int peso, String nivelRiesgoCapacitado) {
-		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso);
+			Date fechaDeNacimiento, int peso, float altura, String nivelRiesgoCapacitado) {
+		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
 		this.nivelRiesgoCapacitado = nivelRiesgoCapacitado;
 	}
 
@@ -31,5 +32,6 @@ public class OperadorAtracciones extends Persona {
 	}
 
 	
+
     
 }

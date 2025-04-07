@@ -14,14 +14,14 @@ public class Cocinero extends Persona {
 	 * @param enfermedadesDiscapacidades
 	 * @param fechaDeNacimiento
 	 * @param peso
+	 * @param altura
 	 * @param capacitadoAlimentos
 	 */
 	public Cocinero(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			Date fechaDeNacimiento, int peso, boolean capacitadoAlimentos) {
-		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso);
+			Date fechaDeNacimiento, int peso, float altura, boolean capacitadoAlimentos) {
+		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
 		this.capacitadoAlimentos = capacitadoAlimentos;
 	}
 
-	
     
 }

@@ -12,10 +12,11 @@ public class Cajero extends Persona {
 	 * @param enfermedadesDiscapacidades
 	 * @param fechaDeNacimiento
 	 * @param peso
+	 * @param altura
 	 */
 	public Cajero(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			Date fechaDeNacimiento, int peso) {
-		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso);
+			Date fechaDeNacimiento, int peso, float altura) {
+		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
 	}
 
 
