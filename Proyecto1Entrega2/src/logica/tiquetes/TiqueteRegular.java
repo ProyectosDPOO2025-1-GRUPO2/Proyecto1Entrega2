@@ -10,39 +10,29 @@ public class TiqueteRegular extends Tiquete {
         this.nivelExclusividad = nivelExclusividad;
     }
 
-    @Override
-    public boolean permiteAcceso(Atraccion atraccion) {
-        String nivelTiquete = this.nivelExclusividad.toLowerCase();
-        String nivelAtraccion = atraccion.getNivelExclusividad().toLowerCase();
-
-        int valorTiquete = convertirNivelANumero(nivelTiquete);
-        int valorAtraccion = convertirNivelANumero(nivelAtraccion);
-
-        if (nivelTiquete.equals("basico")) {
-            return false;
-        }
-
-        return valorTiquete >= valorAtraccion;
-    }
-
-    private int convertirNivelANumero(String nivel) {
-        switch (nivel) {
-            case "familiar":
-                return 1;
-            case "oro":
-                return 2;
-            case "diamante":
-                return 3;
-            default:
-                return 0;
-        }
-    }
-
     public String getNivelExclusividad() {
         return nivelExclusividad;
     }
 
-    public void setNivelExclusividad(String nivelExclusividad) {
-        this.nivelExclusividad = nivelExclusividad;
+    @Override
+    public boolean permiteAcceso(Atraccion atraccion) {
+        String nivelAtraccion = atraccion.getNivelExclusividad();
+        int valorTiquete = convertir(nivelExclusividad);
+        int valorAtraccion = convertir(nivelAtraccion);
+        return valorTiquete >= valorAtraccion;
+    }
+
+    @Override
+    public boolean estaActivo() {
+        return estado;
+    }
+
+    private int convertir(String nivel) {
+        switch (nivel.toLowerCase()) {
+            case "familiar": return 1;
+            case "oro": return 2;
+            case "diamante": return 3;
+            default: return 0;
+        }
     }
 }

@@ -1,25 +1,19 @@
 package logica.atracciones;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.ArrayList;
 
-import logica.personas.OperadorAtracciones;
+public class Espectaculo extends Atraccion {
+    private LocalDateTime horario;
 
-public class Espectaculo {
+    public Espectaculo(int id, String nombre, int cupoMaximo, int empleadosMinimos,
+                       String nivelExclusividad, ArrayList<String> restricciones, Temporada temporada,
+                       LocalDateTime horario) {
+        super(id, nombre, "variable", cupoMaximo, empleadosMinimos, nivelExclusividad, restricciones, temporada);
+        this.horario = horario;
+    }
 
-    protected String id;           
-    protected String nombre;        
-    protected LocalDateTime horario;
-	/**
-	 * @param id
-	 * @param nombre
-	 * @param horario
-	 */
-	public Espectaculo(String id, String nombre, LocalDateTime horario) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.horario = horario;
-	}
-	
+    public LocalDateTime getHorario() {
+        return horario;
+    }
 }

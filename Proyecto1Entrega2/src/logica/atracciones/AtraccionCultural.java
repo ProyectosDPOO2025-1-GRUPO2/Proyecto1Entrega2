@@ -1,35 +1,18 @@
 package logica.atracciones;
 
-import java.util.List;
-
-import logica.personas.OperadorAtracciones;
+import java.util.ArrayList;
 
 public class AtraccionCultural extends Atraccion {
+    private int edadMinima;
 
-    protected int edadMinima;
+    public AtraccionCultural(int id, String nombre, String ubicacion, int cupoMaximo, int empleadosMinimos,
+                              String nivelExclusividad, ArrayList<String> restricciones, Temporada temporada,
+                              int edadMinima) {
+        super(id, nombre, ubicacion, cupoMaximo, empleadosMinimos, nivelExclusividad, restricciones, temporada);
+        this.edadMinima = edadMinima;
+    }
 
-	/**
-	 * @param id
-	 * @param nombre
-	 * @param ubicacion
-	 * @param cupoMaximo
-	 * @param empleadosMinimos
-	 * @param nivelExclusividad
-	 * @param restricciones
-	 * @param temporadaDisponible
-	 * @param nivelRiesgo
-	 * @param operadores
-	 * @param edadMinima
-	 */
-	public AtraccionCultural(String id, String nombre, String ubicacion, int cupoMaximo, int empleadosMinimos,
-			String nivelExclusividad, List<String> restricciones, boolean temporadaDisponible, String nivelRiesgo,
-			List<OperadorAtracciones> operadores, int edadMinima) {
-		super(id, nombre, ubicacion, cupoMaximo, empleadosMinimos, nivelExclusividad, restricciones,
-				temporadaDisponible, nivelRiesgo, operadores);
-		this.edadMinima = edadMinima;
-	}
-
-	
- 
-
+    public int getEdadMinima() {
+        return edadMinima;
+    }
 }

@@ -1,28 +1,22 @@
 package logica.tiquetes;
 
-import java.util.Date;
-
 import logica.atracciones.Atraccion;
 
 public class FastPass extends Tiquete {
-    // Atributos específicos de FastPass
-    protected Date diaUso;  // Día específico en que el cliente puede usar el FastPass
+    private String nivelExclusividad;
 
-	/**
-	 * @param id
-	 * @param estado
-	 * @param diaUso
-	 */
-	public FastPass(int id, boolean estado, Date diaUso) {
-		super(id, estado);
-		this.diaUso = diaUso;
-	}
+    public FastPass(int id, boolean estado, String nivelExclusividad) {
+        super(id, estado);
+        this.nivelExclusividad = nivelExclusividad;
+    }
 
-	@Override
-	public boolean permiteAcceso(Atraccion atraccion) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-    
-	
+    @Override
+    public boolean permiteAcceso(Atraccion atraccion) {
+        return true; // FastPass permite acceso universal
+    }
+
+    @Override
+    public boolean estaActivo() {
+        return estado;
+    }
 }

@@ -3,23 +3,20 @@ package logica.tiquetes;
 import logica.atracciones.Atraccion;
 
 public class TiqueteIndividual extends Tiquete {
-    // Atributos específicos de TiqueteIndividual
-    protected String nombreAtraccion;  // Nombre de la atracción asociada a este tiquete
+    private Atraccion atraccionPermitida;
 
-	/**
-	 * @param id
-	 * @param estado
-	 * @param nombreAtraccion
-	 */
-	public TiqueteIndividual(int id, boolean estado, String nombreAtraccion) {
-		super(id, estado);
-		this.nombreAtraccion = nombreAtraccion;
-	}
+    public TiqueteIndividual(int id, boolean estado, Atraccion atraccionPermitida) {
+        super(id, estado);
+        this.atraccionPermitida = atraccionPermitida;
+    }
 
-	@Override
-	public boolean permiteAcceso(Atraccion atraccion) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-    
+    @Override
+    public boolean permiteAcceso(Atraccion atraccion) {
+        return atraccion.equals(atraccionPermitida);
+    }
+
+    @Override
+    public boolean estaActivo() {
+        return estado;
+    }
 }

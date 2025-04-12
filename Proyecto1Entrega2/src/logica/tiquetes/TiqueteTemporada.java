@@ -1,28 +1,26 @@
 package logica.tiquetes;
 
-import java.util.Date;
-
+import java.time.LocalDateTime;
 import logica.atracciones.Atraccion;
 
 public class TiqueteTemporada extends Tiquete {
-    // Atributos específicos de TiqueteTemporada
-    protected Date fechaInicio;  // Fecha de inicio de la temporada
-    protected Date fechaFin;     // Fecha de fin de la temporada
-	/**
-	 * @param id
-	 * @param estado
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
-	public TiqueteTemporada(int id, boolean estado, Date fechaInicio, Date fechaFin) {
-		super(id, estado);
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
-	}
-	@Override
-	public boolean permiteAcceso(Atraccion atraccion) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-    
+    private LocalDateTime inicio;
+    private LocalDateTime fin;
+
+    public TiqueteTemporada(int id, boolean estado, LocalDateTime inicio, LocalDateTime fin) {
+        super(id, estado);
+        this.inicio = inicio;
+        this.fin = fin;
+    }
+
+    @Override
+    public boolean permiteAcceso(Atraccion atraccion) {
+        LocalDateTime ahora = LocalDateTime.now();
+        return ahora.isAfter(inicio) && ahora.isBefore(fin);
+    }
+
+    @Override
+    public boolean estaActivo() {
+        return estado;
+    }
 }

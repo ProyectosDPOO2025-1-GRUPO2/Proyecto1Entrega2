@@ -1,33 +1,43 @@
 package logica.personas;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Cocinero extends Persona {
-    // Atributos específicos de Cocinero (heredados de Persona)
-    protected boolean capacitadoAlimentos; // Si el cocinero está capacitado para manipular alimentos
+    private boolean capacitadoAlimentos;
 
-	/**
-	 * @param nombre
-	 * @param login
-	 * @param password
-	 * @param enfermedadesDiscapacidades
-	 * @param fechaDeNacimiento
-	 * @param peso
-	 * @param altura
-	 * @param capacitadoAlimentos
-	 */
-	public Cocinero(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			Date fechaDeNacimiento, int peso, float altura, boolean capacitadoAlimentos) {
-		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
-		this.capacitadoAlimentos = capacitadoAlimentos;
-	}
+    public Cocinero(String nombre, String login, String password, ArrayList<String> enfermedadesDiscapacidades,
+                    Date fechaDeNacimiento, int peso, float altura, boolean capacitadoAlimentos) {
+        super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
+        this.capacitadoAlimentos = capacitadoAlimentos;
+    }
 
-	@Override
-	public String getRol() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String getRol() {
+        return "Cocinero";
+    }
 
-    
+    public boolean getCapacitadoAlimentos() {
+        return capacitadoAlimentos;
+    }
+
+    public void trabajarEnCocina() {
+        if (capacitadoAlimentos) {
+            System.out.println(nombre + " está trabajando en la cocina.");
+        } else {
+            System.out.println(nombre + " no está capacitado para trabajar en cocina.");
+        }
+    }
+
+    public void trabajarEnCaja() {
+        System.out.println(nombre + " está cubriendo caja temporalmente.");
+    }
+
+    public void prepararAlimentos() {
+        if (capacitadoAlimentos) {
+            System.out.println(nombre + " está preparando alimentos.");
+        } else {
+            System.out.println(nombre + " no tiene autorización para manipular alimentos.");
+        }
+    }
 }

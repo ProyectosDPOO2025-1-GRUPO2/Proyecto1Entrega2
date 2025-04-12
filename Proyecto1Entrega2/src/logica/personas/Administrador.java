@@ -3,86 +3,71 @@ package logica.personas;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 import logica.atracciones.Atraccion;
 import logica.atracciones.Espectaculo;
 import logica.tiquetes.Tiquete;
 
 public class Administrador extends Persona {
-	
-	private String parqueNombre;
+
+    private String parqueNombre;
 
     private HashMap<String, Persona> personalRegistrado;            // login → Persona
     private HashMap<String, Turno> turnosDisponibles;               // ID → Turno
     private HashMap<String, Atraccion> atracciones;                 // ID → Atracción
     private HashMap<String, Espectaculo> espectaculos;             // ID → Espectáculo
-    private HashMap<String, Tiquete> tiquetesEmitidos;             // Ticket ID → Nombre comprador
-    private HashMap<String, Turno> turnosAsignados;                // login → Turno
-    
+    private HashMap<String, Tiquete> tiquetesEmitidos;             // Ticket ID → Tiquete
+    private HashMap<String, Turno> turnosAsignados;                // login → último Turno asignado
 
-	
-	/**
-	 * @param nombre
-	 * @param login
-	 * @param password
-	 * @param enfermedadesDiscapacidades
-	 * @param fechaDeNacimiento
-	 * @param peso
-	 * @param altura
-	 * @param parqueNombre
-	 * @param personalRegistrado
-	 * @param turnosDisponibles
-	 * @param atracciones
-	 * @param espectaculos
-	 * @param tiquetesEmitidos
-	 * @param turnosAsignados
-	 */
-	public Administrador(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			Date fechaDeNacimiento, int peso, float altura, String parqueNombre,
-			HashMap<String, Persona> personalRegistrado, HashMap<String, Turno> turnosDisponibles,
-			HashMap<String, Atraccion> atracciones, HashMap<String, Espectaculo> espectaculos,
-			HashMap<String, Tiquete> tiquetesEmitidos, HashMap<String, Turno> turnosAsignados) {
-		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
-		this.parqueNombre = parqueNombre;
-		this.personalRegistrado = personalRegistrado;
-		this.turnosDisponibles = turnosDisponibles;
-		this.atracciones = atracciones;
-		this.espectaculos = espectaculos;
-		this.tiquetesEmitidos = tiquetesEmitidos;
-		this.turnosAsignados = turnosAsignados;
-	}
+    public Administrador(String nombre, String login, String password, ArrayList<String> enfermedadesDiscapacidades,
+                         Date fechaDeNacimiento, int peso, float altura, String parqueNombre,
+                         HashMap<String, Persona> personalRegistrado, HashMap<String, Turno> turnosDisponibles,
+                         HashMap<String, Atraccion> atracciones, HashMap<String, Espectaculo> espectaculos,
+                         HashMap<String, Tiquete> tiquetesEmitidos, HashMap<String, Turno> turnosAsignados) {
+        super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
+        this.parqueNombre = parqueNombre;
+        this.personalRegistrado = personalRegistrado;
+        this.turnosDisponibles = turnosDisponibles;
+        this.atracciones = atracciones;
+        this.espectaculos = espectaculos;
+        this.tiquetesEmitidos = tiquetesEmitidos;
+        this.turnosAsignados = turnosAsignados;
+    }
 
-	//metodos
-	
-	public void registrarPersona(Persona persona) {
-	    personalRegistrado.put(persona.getLogin(), persona);
-	}
-	
-	public void eliminarPersona(String login) {
-	    personalRegistrado.remove(login);
-	}
-	
-	public Persona obtenerPersona(String login) {
-	    return personalRegistrado.get(login);
-	}
-	
-	public List<Persona> obtenerTodoElPersonal() {
+    // === Gestión de Personas ===
+    public void registrarPersona(Persona persona) {
+        personalRegistrado.put(persona.getLogin(), persona);
+    }
+
+    public void eliminarPersona(String login) {
+        personalRegistrado.remove(login);
+    }
+
+    public Persona obtenerPersona(String login) {
+        return personalRegistrado.get(login);
+    }
+
+    public ArrayList<Persona> obtenerTodoElPersonal() {
         return new ArrayList<>(personalRegistrado.values());
     }
-	public void asignarTurno(String login, boolean apertura, boolean cierre, String lugar, String tarea) {
+
+    // === Gestión de Turnos ===
+    public void asignarTurno(String login, boolean apertura, boolean cierre, String lugar, String tarea) {
         Persona persona = personalRegistrado.get(login);
         if (persona != null) {
             Turno turno = new Turno(apertura, cierre, lugar, tarea);
-            turnosAsignados.put(login, turno);
+            persona.agregarTurno(turno); // actualiza lista de turnos del empleado
+            turnosAsignados.put(login, turno); // mantiene registro de último turno asignado
         }
     }
-	public Turno consultarTurno(String login) {
+
+    public Turno consultarTurno(String login) {
         return turnosAsignados.get(login);
     }
-	  // === Gestión de Atracciones ===
-	public void registrarAtraccion(Atraccion atraccion) {
-        atracciones.put(atraccion.getId(), atraccion);
+
+    // === Gestión de Atracciones ===
+    public void registrarAtraccion(Atraccion atraccion) {
+        atracciones.put(String.valueOf(atraccion.getId()), atraccion);
     }
 
     public Atraccion obtenerAtraccion(String id) {
@@ -104,9 +89,8 @@ public class Administrador extends Persona {
         }
     }
 
-	@Override
-	public String getRol() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String getRol() {
+        return "Administrador";
+    }
 }

@@ -11,6 +11,19 @@ public abstract class Tiquete {
         this.estado = estado;
     }
 
-    // Método abstracto que las subclases deben implementar
     public abstract boolean permiteAcceso(Atraccion atraccion);
+
+    public abstract boolean estaActivo();
+
+    public int getId() {
+        return id;
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void usar() {
+        this.estado = false;
+    }
 }

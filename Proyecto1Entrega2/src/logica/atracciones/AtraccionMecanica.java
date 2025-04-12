@@ -1,41 +1,42 @@
 package logica.atracciones;
 
-import java.util.List;
-
-import logica.personas.OperadorAtracciones;
+import java.util.ArrayList;
 
 public class AtraccionMecanica extends Atraccion {
+    private int alturaMinima;
+    private int alturaMaxima;
+    private int pesoMinimo;
+    private int pesoMaximo;
+    private String nivelRiesgo;
 
-    protected int alturaMinima;   
-    protected int alturaMaxima;   
-    protected int pesoMinimo;     
-    protected int pesoMaximo;
-	/**
-	 * @param id
-	 * @param nombre
-	 * @param ubicacion
-	 * @param cupoMaximo
-	 * @param empleadosMinimos
-	 * @param nivelExclusividad
-	 * @param restricciones
-	 * @param temporadaDisponible
-	 * @param nivelRiesgo
-	 * @param operadores
-	 * @param alturaMinima
-	 * @param alturaMaxima
-	 * @param pesoMinimo
-	 * @param pesoMaximo
-	 */
-	public AtraccionMecanica(String id, String nombre, String ubicacion, int cupoMaximo, int empleadosMinimos,
-			String nivelExclusividad, List<String> restricciones, boolean temporadaDisponible, String nivelRiesgo,
-			List<OperadorAtracciones> operadores, int alturaMinima, int alturaMaxima, int pesoMinimo, int pesoMaximo) {
-		super(id, nombre, ubicacion, cupoMaximo, empleadosMinimos, nivelExclusividad, restricciones,
-				temporadaDisponible, nivelRiesgo, operadores);
-		this.alturaMinima = alturaMinima;
-		this.alturaMaxima = alturaMaxima;
-		this.pesoMinimo = pesoMinimo;
-		this.pesoMaximo = pesoMaximo;
-	}
-	
-    
+    public AtraccionMecanica(int id, String nombre, String ubicacion, int cupoMaximo, int empleadosMinimos,
+                              String nivelExclusividad, ArrayList<String> restricciones, Temporada temporada,
+                              int alturaMinima, int alturaMaxima, int pesoMinimo, int pesoMaximo, String nivelRiesgo) {
+        super(id, nombre, ubicacion, cupoMaximo, empleadosMinimos, nivelExclusividad, restricciones, temporada);
+        this.alturaMinima = alturaMinima;
+        this.alturaMaxima = alturaMaxima;
+        this.pesoMinimo = pesoMinimo;
+        this.pesoMaximo = pesoMaximo;
+        this.nivelRiesgo = nivelRiesgo;
+    }
+
+    public int getAlturaMinima() {
+        return alturaMinima;
+    }
+
+    public int getAlturaMaxima() {
+        return alturaMaxima;
+    }
+
+    public int getPesoMinimo() {
+        return pesoMinimo;
+    }
+
+    public int getPesoMaximo() {
+        return pesoMaximo;
+    }
+
+    public String getNivelRiesgo() {
+        return nivelRiesgo;
+    }
 }

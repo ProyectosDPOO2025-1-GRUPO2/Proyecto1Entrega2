@@ -1,43 +1,84 @@
 package logica.personas;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
+import logica.atracciones.Atraccion;
+import logica.atracciones.AtraccionMecanica;
 
 public class OperadorAtracciones extends Persona {
-    // Atributos específicos de OperadorAtracciones (heredados de Persona)
-    protected String nivelRiesgoCapacitado; // Nivel de riesgo para el que el operador está capacitado
+    private String nivelRiesgoCapacitado;
+    private ArrayList<Atraccion> atraccionesAsignadas;
 
-	/**
-	 * @param nombre
-	 * @param login
-	 * @param password
-	 * @param enfermedadesDiscapacidades
-	 * @param fechaDeNacimiento
-	 * @param peso
-	 * @param altura
-	 * @param nivelRiesgoCapacitado
-	 */
-	public OperadorAtracciones(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			Date fechaDeNacimiento, int peso, float altura, String nivelRiesgoCapacitado) {
-		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
-		this.nivelRiesgoCapacitado = nivelRiesgoCapacitado;
-	}
+    public OperadorAtracciones(String nombre, String login, String password, ArrayList<String> enfermedadesDiscapacidades,
+                                Date fechaDeNacimiento, int peso, float altura, String nivelRiesgoCapacitado) {
+        super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
+        this.nivelRiesgoCapacitado = nivelRiesgoCapacitado;
+        this.atraccionesAsignadas = new ArrayList<>();
+    }
 
-	public String getNivelRiesgoCapacitado() {
-		return nivelRiesgoCapacitado;
-	}
+    @Override
+    public String getRol() {
+        return "OperadorAtracciones";
+    }
 
-	public void setNivelRiesgoCapacitado(String nivelRiesgoCapacitado) {
-		this.nivelRiesgoCapacitado = nivelRiesgoCapacitado;
-	}
+    public void operarAtraccion(Atraccion atraccion) {
+        if (atraccion instanceof AtraccionMecanica &&
+            ((AtraccionMecanica) atraccion).getNivelRiesgo().equalsIgnoreCase(nivelRiesgoCapacitado)) {
+            System.out.println("Operando atracción: " + atraccion.getNombre());
+        } else {
+            System.out.println("No capacitado para operar esta atracción.");
+        }
+    }
 
-	@Override
-	public String getRol() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public boolean verificarRestriccionesCliente(Cliente cliente, Atraccion atraccion) {
+        ArrayList<String> restricciones = atraccion.getRestricciones();
+        if (restricciones.size() < 4) return false;
 
-	
+        try {
+            int alturaMin = Integer.parseInt(restricciones.get(0));
+            int alturaMax = Integer.parseInt(restricciones.get(1));
+            int pesoMin = Integer.parseInt(restricciones.get(2));
+            int pesoMax = Integer.parseInt(restricciones.get(3));
 
-    
+            float alturaCliente = cliente.getAltura();
+            int pesoCliente = cliente.getPeso();
+
+            if (alturaCliente < alturaMin || alturaCliente > alturaMax) return false;
+            if (pesoCliente < pesoMin || pesoCliente > pesoMax) return false;
+
+            ArrayList<String> condicionesClima = new ArrayList<>(restricciones.subList(4, restricciones.size()));
+            for (String condicion : condicionesClima) {
+                if (cliente.getEnfermedadesDiscapacidades().contains(condicion)) return false;
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Restricciones inválidas.");
+            return false;
+        }
+
+        return true;
+    }
+
+    public void consultarAtraccionesDisponibles(ArrayList<Atraccion> atracciones) {
+        for (Atraccion atraccion : atracciones) {
+            if (atraccion instanceof AtraccionMecanica &&
+                ((AtraccionMecanica) atraccion).getNivelRiesgo().equalsIgnoreCase(nivelRiesgoCapacitado)) {
+                System.out.println("Puede operar: " + atraccion.getNombre());
+            }
+        }
+    }
+
+    public void asignarTareas(Atraccion atraccion) {
+        if (atraccion instanceof AtraccionMecanica &&
+            ((AtraccionMecanica) atraccion).getNivelRiesgo().equalsIgnoreCase(nivelRiesgoCapacitado)) {
+            atraccionesAsignadas.add(atraccion);
+            System.out.println("Atracción asignada: " + atraccion.getNombre());
+        }
+    }
+
+    public void setNivelRiesgoCapacitado(String nivelRiesgoCapacitado) {
+        this.nivelRiesgoCapacitado = nivelRiesgoCapacitado;
+    }
 }
+    

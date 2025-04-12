@@ -1,29 +1,44 @@
 package logica.personas;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
+import logica.atracciones.Atraccion;
+import logica.tiquetes.Tiquete;
 
 public class Cajero extends Persona {
 
-	/**
-	 * @param nombre
-	 * @param login
-	 * @param password
-	 * @param enfermedadesDiscapacidades
-	 * @param fechaDeNacimiento
-	 * @param peso
-	 * @param altura
-	 */
-	public Cajero(String nombre, String login, String password, List<String> enfermedadesDiscapacidades,
-			Date fechaDeNacimiento, int peso, float altura) {
-		super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
-	}
+    private ArrayList<Tiquete> tiquetesVendidos;
 
-	@Override
-	public String getRol() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Cajero(String nombre, String login, String password, ArrayList<String> enfermedadesDiscapacidades,
+                  Date fechaDeNacimiento, int peso, float altura) {
+        super(nombre, login, password, enfermedadesDiscapacidades, fechaDeNacimiento, peso, altura);
+        this.tiquetesVendidos = new ArrayList<>();
+    }
 
+    @Override
+    public String getRol() {
+        return "Cajero";
+    }
 
+    public void venderTiquete(Tiquete tiquete, Cliente cliente) {
+        tiquetesVendidos.add(tiquete);
+        cliente.comprarTiquete(tiquete);
+    }
+
+    public ArrayList<Tiquete> consultarTiquetesVendidos() {
+        return tiquetesVendidos;
+    }
+
+    public boolean validarTiquete(Tiquete tiquete) {
+        return tiquete.estaActivo(); // Suponiendo que Tiquete tiene un método estaActivo()
+    }
+
+    public void registrarAccesoAAttraction(Atraccion atraccion, Cliente cliente) {
+        if (cliente.esAccesoValido(atraccion)) {
+            System.out.println("Acceso permitido a: " + atraccion.getNombre());
+        } else {
+            System.out.println("Acceso denegado a: " + atraccion.getNombre());
+        }
+    }
 }
