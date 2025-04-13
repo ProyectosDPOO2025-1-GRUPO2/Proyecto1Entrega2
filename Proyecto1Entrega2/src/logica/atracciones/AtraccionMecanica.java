@@ -39,4 +39,9 @@ public class AtraccionMecanica extends Atraccion {
     public String getNivelRiesgo() {
         return nivelRiesgo;
     }
+    
+    @Override
+    public String toString() {
+        return "mecanica"+ ";" + super.toString() + ";" + alturaMinima + ";" + alturaMaxima + ";" + pesoMinimo + ";" + pesoMaximo + ";" + nivelRiesgo;
+    }
 }

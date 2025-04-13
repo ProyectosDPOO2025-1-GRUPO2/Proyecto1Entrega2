@@ -35,4 +35,9 @@ public class TiqueteRegular extends Tiquete {
             default: return 0;
         }
     }
+    
+    @Override
+    public String toString() {
+        return "regular" + ";" + id + ";" + estado + ";" + nivelExclusividad;
+    }
 }

@@ -15,4 +15,9 @@ public class AtraccionCultural extends Atraccion {
     public int getEdadMinima() {
         return edadMinima;
     }
+    
+    @Override
+    public String toString() {
+        return "cultural"+ ";" + super.toString() + ";" + edadMinima;
+    }
 }

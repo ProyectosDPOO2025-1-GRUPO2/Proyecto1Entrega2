@@ -23,4 +23,7 @@ public class TiqueteTemporada extends Tiquete {
     public boolean estaActivo() {
         return estado;
     }
+    public String toString() {
+        return "temporada" + ";" + id +  ";" +  estado + ";" + inicio + ";" + fin;
+    }
 }

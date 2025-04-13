@@ -71,4 +71,11 @@ public abstract class Atraccion {
     public ArrayList<OperadorAtracciones> getOperadores() {
         return operadores;
     }
+    
+    @Override
+    public String toString() {
+        return "generica" + ";" + id + ";" + nombre + ";" + ubicacion + ";" + cupoMaximo + ";" + empleadosMinimos + ";" +
+    nivelExclusividad + ";" + String.join(",", restricciones) + ";" + (temporada != null ? temporada.getNombre() : "sin-temporada");
+    }
+    
 }

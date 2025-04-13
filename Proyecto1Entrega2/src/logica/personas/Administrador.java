@@ -7,6 +7,7 @@ import java.util.HashMap;
 import logica.atracciones.Atraccion;
 import logica.atracciones.Espectaculo;
 import logica.tiquetes.Tiquete;
+import persistencia.ArchivoPlano;
 
 public class Administrador extends Persona {
 
@@ -93,4 +94,74 @@ public class Administrador extends Persona {
     public String getRol() {
         return "Administrador";
     }
+    
+    public void guardarPersonasEnArchivo(String rutaArchivo) {
+        ArchivoPlano archivo = new ArchivoPlano();
+        ArrayList<String> lineas = new ArrayList<>();
+
+        for (Persona p : personalRegistrado.values()) {
+            lineas.add(p.toString());
+        }
+
+        archivo.escribir(rutaArchivo, lineas);
+    }
+    
+    public void guardarTiquetesEnArchivo(String rutaArchivo) {
+        ArchivoPlano archivo = new ArchivoPlano();
+        ArrayList<String> lineas = new ArrayList<>();
+
+        for (Tiquete t : tiquetesEmitidos.values()) {
+            lineas.add(t.toString());
+        }
+
+        archivo.escribir(rutaArchivo, lineas);
+    }
+    
+    public void guardarAtraccionesEnArchivo(String rutaArchivo) {
+        ArchivoPlano archivo = new ArchivoPlano();
+        ArrayList<String> lineas = new ArrayList<>();
+
+        for (Atraccion a : atracciones.values()) {
+            lineas.add(a.toString());
+        }
+
+        archivo.escribir(rutaArchivo, lineas);
+    }
+    public void guardarEspectaculosEnCSV(String rutaArchivo) {
+        ArchivoPlano archivo = new ArchivoPlano();
+        ArrayList<String> lineas = new ArrayList<>();
+
+        for (Espectaculo e : espectaculos.values()) {
+            lineas.add(e.toString());
+        }
+
+        archivo.escribir(rutaArchivo, lineas);
+    }
+
+    public HashMap<String, Espectaculo> getEspectaculos() {
+        return espectaculos;
+    }
+
+	public String getParqueNombre() {
+		return parqueNombre;
+	}
+
+	public HashMap<String, Persona> getPersonalRegistrado() {
+		return personalRegistrado;
+	}
+
+	public HashMap<String, Turno> getTurnosDisponibles() {
+		return turnosDisponibles;
+	}
+
+	public HashMap<String, Atraccion> getAtracciones() {
+		return atracciones;
+	}
+
+	public HashMap<String, Tiquete> getTiquetesEmitidos() {
+		return tiquetesEmitidos;
+	}
+
+	
+    
 }

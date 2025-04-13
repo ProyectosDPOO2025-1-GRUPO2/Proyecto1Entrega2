@@ -19,4 +19,8 @@ public class FastPass extends Tiquete {
     public boolean estaActivo() {
         return estado;
     }
+    @Override
+    public String toString() {
+        return "fastpass" + ";" + id + ";" + estado + ";" + nivelExclusividad;
+    }
 }

@@ -64,4 +64,10 @@ public abstract class Persona {
     }
 
     public abstract String getRol();
+    
+    @Override
+    public String toString() {
+        return getRol() + ";" + nombre + ";" + login + ";" + password + ";" + String.join(",", enfermedadesDiscapacidades) + ";" +
+    fechaDeNacimiento + ";" + peso + ";" + altura;
+    }
 }

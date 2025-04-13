@@ -19,4 +19,8 @@ public class TiqueteIndividual extends Tiquete {
     public boolean estaActivo() {
         return estado;
     }
+    @Override
+    public String toString() {
+        return "individual" + ";" + id + ";" + estado + ";" + atraccionPermitida.getNombre();
+    }
 }
